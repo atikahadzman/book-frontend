@@ -4,7 +4,7 @@ import { BooksComponent } from '././pages/books.component';
 import { ProgressComponent } from '././pages/progress.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'profile', pathMatch: 'full' },
+  { path: '', redirectTo: 'app', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent },
   { path: 'books', component: BooksComponent },
   { path: 'progress', component: ProgressComponent }
