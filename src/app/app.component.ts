@@ -1,26 +1,46 @@
-import { Component, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SidebarComponent } from './layout/sidebar.component';
 import { BookService } from './services/book.service';
 import { Book } from './models/books';
+import { ProfileService } from './services/profile.service';
+import { Profile } from './models/profile';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [CommonModule, SidebarComponent, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  // imports: [CommonModule],
+  styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
-  title = 'Bookstore';
-  books: Book[] = [];
+export class AppComponent {}
 
-  constructor(private bookService: BookService) {}
+// @Component({
+//   selector: 'app-root',
+//   standalone: true,
+//   imports: [SidebarComponent, CommonModule],
+//   templateUrl: './app.component.html',
+//   styleUrl: './app.component.css',
+// })
+// export class AppComponent implements OnInit {
+//   books: Book[] = [];
+//   profile: Profile | null = null;
+//   title = 'Hello, ' + this.profile;
 
-  ngOnInit() {
-    this.bookService.getAll().subscribe(data => {
-      this.books = data;
-    });
-  }
-}
+//   constructor(
+//     private bookService: BookService,
+//     private profileService: ProfileService
+//   ) {}
+
+//   ngOnInit(): void {
+//     this.bookService.getAll().subscribe(data => {
+//       this.books = data;
+//     });
+
+//     const id = '695d43c77ed31d27662f001b';
+//     this.profileService.getById(id).subscribe(profile => {
+//       this.profile = profile;
+//     });
+//   }
+// }

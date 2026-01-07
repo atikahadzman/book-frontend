@@ -8,7 +8,7 @@ import { Book } from '../models/books';
 })
 
 export class BookService {
-  private http = inject(HttpClient);  // functional injection in Angular 21
+  private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8080/api/books';
 
   // READ ALL
