@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { BookService } from './services/book.service';
 import { Book } from './models/books';
 import { ProfileService } from './services/profile.service';
@@ -10,11 +13,20 @@ import { Profile } from './models/profile';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, SidebarComponent, RouterOutlet],
+  imports: [
+    CommonModule, 
+    SidebarComponent, 
+    RouterOutlet,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  collapsed = false;
+}
 
 // @Component({
 //   selector: 'app-root',
