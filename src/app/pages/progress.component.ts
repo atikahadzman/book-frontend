@@ -1,5 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 import { ProgressService } from '../services/progress.service';
 import { Progress } from '../models/progress';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,27 +20,13 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule, 
     MatTableModule
   ],
-  template: `<h1>Progress</h1>
-    <ul *ngIf="progress; else loading">
-        <li *ngFor="let prog of progress">
-            {{ prog.book_id }}
-        </li>
-    </ul>
-
-    <ng-template #loading>
-        <p>Loading progress...</p>
-    </ng-template>
-  `
+  templateUrl: './progress.component.html',
 })
-export class ProgressComponent implements OnInit {
-  progress: Progress[] = [];
-  // displayedColumns: string[] = ['title', 'status'];
+export class ProgressComponent {
+  progress$!: Observable<Progress[]>;
+  displayedColumns: string[] = ['Title', 'Progress', 'Status'];
 
-  constructor(private progressService: ProgressService) {}
-  
-  ngOnInit() {
-    this.progressService.getAll().subscribe(data => {
-      this.progress = data;
-    });
+  constructor(private progresService: ProgressService) {
+    this.progress$ = this.progresService.getAll();
   }
 }

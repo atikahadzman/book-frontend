@@ -1,18 +1,49 @@
 <h1>Books List</h1>
+<hr/>
 <table mat-table [dataSource]="(books$ | async) || []" class="mat-elevation-z8">
-  <!-- Title Column -->
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Title</th>
+  <!-- title column -->
+  <ng-container matColumnDef="cover_image">
+    <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let book">
-      {{ book.title }}
+      <h3> {{ book.title }} </h3>
+      <img
+        src="{{ book.cover_image }}"
+        alt="{{ book.title }}"
+        class="cover-image"
+      />
     </td>
   </ng-container>
 
-  <!-- Author Column -->
+  <!-- author column -->
   <ng-container matColumnDef="author">
     <th mat-header-cell *matHeaderCellDef>Author</th>
     <td mat-cell *matCellDef="let book">
       {{ book.author }}
+    </td>
+  </ng-container>
+
+  <!-- category column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Category</th>
+    <td mat-cell *matCellDef="let book">
+      {{ book.category }}
+    </td>
+  </ng-container> 
+  
+  <!-- total pages column -->
+  <ng-container matColumnDef="total_pages">
+    <th mat-header-cell *matHeaderCellDef>Total pages</th>
+    <td mat-cell *matCellDef="let book">
+      {{ book.total_pages }}
+    </td>
+  </ng-container> 
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let book">
+      <div class="example-button-row">
+        <a matButton="filled" href="https://www.google.com/" target="_blank">Want to read</a>
+      </div>
     </td>
   </ng-container>
 
