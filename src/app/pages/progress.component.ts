@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
-  // selector: 'app-progress',
+  selector: 'app-progress',
   standalone: true,
   imports: [
     CommonModule, 

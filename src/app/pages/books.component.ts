@@ -1,33 +1,24 @@
 import { Component,  OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/books';
+import { Observable } from 'rxjs';
 
 @Component({
+  selector: 'app-books',
   standalone: true,
-  imports: [CommonModule],
-  template: `
-    <h1>Books List</h1>
-
-    <ul *ngIf="books; else loading">
-      <li *ngFor="let book of books">
-        <strong>{{ book.title }}</strong> — {{ book.author }}
-      </li>
-    </ul>
-    
-    <ng-template #loading>
-      <p>Loading books...</p>
-    </ng-template>
-  `
+  imports: [
+    CommonModule, 
+    MatTableModule
+  ],
+  templateUrl: './books.component.html',
 })
-export class BooksComponent implements OnInit {
-  books: Book[] = [];
-  
-  constructor(private bookService: BookService) {}
+export class BooksComponent {
+  books$!: Observable<Book[]>;
+  displayedColumns: string[] = ['title', 'author'];
 
-  ngOnInit() {
-    this.bookService.getAll().subscribe(data => {
-      this.books = data;
-    });
+  constructor(private bookService: BookService) {
+    this.books$ = this.bookService.getAll();
   }
 }

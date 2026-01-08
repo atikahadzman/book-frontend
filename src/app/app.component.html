@@ -1,21 +1,5 @@
-<!-- <main class="app-layout">
-  <app-sidebar></app-sidebar>
-
-  <section class="page-content">
-    <router-outlet></router-outlet>
-  </section>
-</main> -->
-
-
 <div class="layout">
-  <app-sidebar></app-sidebar>
-
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
-</div>
-
-<mat-sidenav-container class="layout">
+  <!-- sidebar menu -->
   <mat-sidenav
     #drawer
     [mode]="collapsed ? 'over' : 'side'"
@@ -23,17 +7,13 @@
     class="sidebar">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="collapsed = !collapsed">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="title">Dashboard</span>
-    </mat-toolbar>
 
-    <main class="content">
-      <router-outlet></router-outlet>
-    </main>
+  <div class="col-span-12">
+    <app-greeting></app-greeting>
+  </div>
 
-    </mat-sidenav-content>
-</mat-sidenav-container>
+  <!-- content -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

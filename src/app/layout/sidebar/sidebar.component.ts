@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   standalone: true,
@@ -9,7 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     RouterLink, 
     RouterLinkActive,
-    MatIconModule
+    MatIconModule,   
+    MatSidenavModule,
   ],
   styleUrl: './sidebar.component.css',
   templateUrl: './sidebar.component.html',
