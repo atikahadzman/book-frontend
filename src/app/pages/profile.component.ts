@@ -4,9 +4,11 @@ import { ProfileService } from '../services/profile.service';
 import { Profile } from '../models/profile';
 
 @Component({
-    selector: 'app-profile',
+    // selector: 'app-profile',
     standalone: true,
-    imports: [CommonModule],
+    imports: [
+        CommonModule
+    ],
     template: `
         <h1>Profile</h1>
 

@@ -1,11 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './layout/sidebar.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BookService } from './services/book.service';
 import { Book } from './models/books';
 import { ProfileService } from './services/profile.service';
 import { Profile } from './models/profile';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {}
 // @Component({
 //   selector: 'app-root',
 //   standalone: true,
-//   imports: [SidebarComponent, CommonModule],
+//   imports: [SidebarComponent, CommonModule, RouterOutlet],
 //   templateUrl: './app.component.html',
 //   styleUrl: './app.component.css',
 // })

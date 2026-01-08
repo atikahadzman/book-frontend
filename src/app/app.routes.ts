@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from '././pages/profile.component';
 import { BooksComponent } from '././pages/books.component';
-import { ProgressComponent } from '././pages/progress.component';
+import { ProgressComponent } from './pages/progress.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'app', pathMatch: 'full' },
