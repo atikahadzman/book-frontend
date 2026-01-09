@@ -42,7 +42,7 @@
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let book">
       <div class="example-button-row">
-        <a matButton="filled" href="https://www.google.com/" target="_blank">Want to read</a>
+        <a matButton="filled" href="{{ book.book_url }}" target="_blank">Read</a>
       </div>
     </td>
   </ng-container>

@@ -8,4 +8,5 @@ export interface Book {
   cover_image: string;
   total_pages: BigInteger;
   created_at: string;
+  book_url: string;
 }

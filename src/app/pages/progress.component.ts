@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-progress',
@@ -18,7 +19,8 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule, 
     MatIconModule, 
     MatCardModule, 
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule
   ],
   templateUrl: './progress.component.html',
 })

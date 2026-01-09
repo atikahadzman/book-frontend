@@ -1,6 +1,7 @@
 import { Component,  OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 import { BookService } from '../services/book.service';
 import { Book } from '../models/books';
 import { Observable } from 'rxjs';
@@ -12,7 +13,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule, 
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule,
   ],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css',
@@ -29,5 +31,9 @@ export class BooksComponent {
 
   constructor(private bookService: BookService) {
     this.books$ = this.bookService.getAll();
+  }
+
+  openBook(bookId: number) {
+    window.open(`/books/${bookId}/read`, '_blank');
   }
 }
