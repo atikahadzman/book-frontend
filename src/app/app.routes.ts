@@ -1,11 +1,26 @@
-import { Routes } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { ProfileComponent } from '././pages/profile.component';
 import { BooksComponent } from '././pages/books.component';
 import { ProgressComponent } from './pages/progress.component';
+// authentication
+import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'app', pathMatch: 'full' },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'books', component: BooksComponent },
-  { path: 'progress', component: ProgressComponent }
+  { path: '', component: LoginComponent },
+  // { path: 'register', component: RegisterComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'books', component: BooksComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'progress', component: ProgressComponent },
+      { path: '', redirectTo: 'books', pathMatch: 'full' }
+    ]
+  },
+
+  { path: '**', redirectTo: '' }
 ];
+
+// export const router = provideRouter(routes);

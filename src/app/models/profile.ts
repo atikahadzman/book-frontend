@@ -7,4 +7,5 @@ export interface Profile {
     status: string;
     book_id: string;
     created_at: number;
+    password: string;
 }
