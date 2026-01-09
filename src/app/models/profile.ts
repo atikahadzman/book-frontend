@@ -8,4 +8,5 @@ export interface Profile {
     book_id: string;
     created_at: number;
     password: string;
+    username: string;
 }

@@ -15,24 +15,30 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  credentials = {
-    email: '',
-    password: ''
-  };
-  email = '';
+  username = '';
   password = '';
   error = '';
-  authService: any;
-  
+
   constructor(
     private auth: AuthService, 
     private router: Router
   ) {
   }
 
-  onSubmit() {
-    this.authService.login(this.credentials).subscribe(() => {
-      this.router.navigate(['/dashboard']);
+  login() {
+    const credentials = { 
+      username: this.username, 
+      password: this.password 
+    };
+
+    this.auth.login(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err: any) => {
+        console.error('Login failed', err);
+        alert('Login failed');
+      }
     });
   }
 }

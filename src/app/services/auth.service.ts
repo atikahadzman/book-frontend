@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 export interface User {
   id?: string;
   username: string;
-  email: string;
   password: string;
   token?: string;
 }
@@ -15,12 +14,12 @@ export interface User {
 export class AuthService {
     private _user?: any;
 
-    private apiUrl = 'http://localhost:8080/api/user';
+    private apiUrl = 'http://localhost:8080/api/auth/';
 
     constructor(private http: HttpClient) {}
 
-    login(credentials: any) {
-        return this.http.post('/api/login', credentials);
+    login(credentials: { username: string, password: string }): Observable<any> {
+        return this.http.post(this.apiUrl + 'login', credentials, { responseType: 'text' });
     }
 
     logout() {
