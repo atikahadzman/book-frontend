@@ -8,7 +8,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BooksComponent } from './pages/books.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 @Component({
@@ -24,7 +23,6 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     MatBadgeModule,
     FormsModule,
     HttpClientModule,
-    BooksComponent,
     SidebarComponent
   ],
   templateUrl: './app.component.html',
