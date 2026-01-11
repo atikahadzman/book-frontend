@@ -1,5 +1,11 @@
 <h1>Books List</h1>
 <hr/>
+
+<mat-form-field appearance="fill" style="width: 100%; margin-bottom: 1rem;">
+  <mat-label>Search by title</mat-label>
+  <input matInput placeholder="Enter book title" (input)="onSearchChange($event.target.value)" />
+</mat-form-field>
+
 <table mat-table [dataSource]="(books$ | async) || []" class="mat-elevation-z8">
   <!-- title column -->
   <ng-container matColumnDef="cover_image">
