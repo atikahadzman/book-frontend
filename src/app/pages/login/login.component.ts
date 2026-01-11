@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
   imports: [
     FormsModule,
     MatButtonModule,
+    CommonModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
@@ -33,7 +35,7 @@ export class LoginComponent {
 
     this.auth.login(credentials).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/books']);
       },
       error: (err: any) => {
         console.error('Login failed', err);

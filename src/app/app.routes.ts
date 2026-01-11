@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: '', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
     children: [
       { path: 'books', component: BooksComponent },
@@ -20,7 +20,7 @@ export const routes: Routes = [
     ]
   },
 
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 // export const router = provideRouter(routes);

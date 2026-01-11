@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 // import { MaterialModule } from './material.module';
 import { SidebarComponent } from './../sidebar/sidebar.component';
+import { BooksComponent } from '../../pages/books.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ import { SidebarComponent } from './../sidebar/sidebar.component';
     RouterOutlet,
     MatBadgeModule,
     SidebarComponent,
+    BooksComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',

@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<div class="layout">
+  <!-- sidebar menu -->
+  <!-- <mat-sidenav
+    #drawer
+    [mode]="collapsed ? 'over' : 'side'"
+    [opened]="!collapsed"
+    class="sidebar"> -->
+    <app-sidebar></app-sidebar>
+  <!-- </mat-sidenav> -->
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
