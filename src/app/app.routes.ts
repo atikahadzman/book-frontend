@@ -5,9 +5,10 @@ import { BooksComponent } from '././pages/books.component';
 import { ProgressComponent } from './pages/progress.component';
 // authentication
 import { LoginComponent } from './pages/login/login.component';
+import { BookFormComponent } from './pages/book-form/book-form.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   {
     path: '',
@@ -20,7 +21,16 @@ export const routes: Routes = [
     ]
   },
 
+  {
+    path: 'books',
+      children: [
+        { path: '', component: BooksComponent },
+        { path: 'new', component: BookFormComponent },
+        { path: ':id/edit', component: BookFormComponent },
+      ],
+  },
+
   { path: '**', redirectTo: 'login' }
 ];
 
-// export const router = provideRouter(routes);
+export const router = provideRouter(routes);

@@ -3,3 +3,14 @@
   height: 150px;
   object-fit: cover;
 }
+
+.create-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.create-book h1 {
+  margin: 0;
+}

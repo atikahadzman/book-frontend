@@ -22,13 +22,40 @@ export class BookService {
   }
 
   // CREATE
-  create(book: Book): Observable<Book> {
-    return this.http.post<Book>(this.apiUrl, book);
+  create(book: Book, image: File, pdf: File) {
+    const formData = new FormData();
+
+    formData.append('title', book.title);
+    formData.append('author', book.author);
+    formData.append('totalPages', book.totalPages.toString());
+    formData.append('status', book.status);
+    formData.append('description', book.description);
+
+    if (image) {
+      formData.append('coverImage', image);
+    }
+
+    if (pdf) {
+      formData.append('bookFile', pdf);
+    }
+
+    return this.http.post<Book>(this.apiUrl, formData);
   }
 
   // UPDATE
-  update(id: string, book: Book): Observable<Book> {
-    return this.http.put<Book>(`${this.apiUrl}/${id}`, book);
+  update(id: string, book: Book, image?: File, pdf?: File) {
+    const formData = new FormData();
+
+    Object.entries(book).forEach(([key, value]) => {
+      if (value !== undefined) {
+        formData.append(key, value.toString());
+      }
+    });
+
+    if (image) formData.append('coverImage', image);
+    if (pdf) formData.append('bookFile', pdf);
+
+    return this.http.put<Book>(`${this.apiUrl}/${id}`, formData);
   }
 
   // DELETE

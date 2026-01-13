@@ -34,7 +34,6 @@ export class BooksComponent {
   displayedColumns: string[] = [
     'cover_image',
     'author', 
-    'category',
     'total_pages', 
     'action', 
   ];

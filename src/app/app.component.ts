@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +30,15 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  collapsed = false;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  
+  isDesktop = true;
+
+   constructor(private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver
+      .observe(['(min-width: 650px)'])
+      .subscribe(result => {
+        this.isDesktop = result.matches;
+      });
+  }
 }

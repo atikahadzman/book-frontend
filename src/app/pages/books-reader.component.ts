@@ -11,8 +11,7 @@ import { BookService } from '../services/book.service';
   templateUrl: './books-reader.component.html',
 })
 export class BooksReaderComponent implements OnInit {
-
-  pdfUrl!: string;
+  pdfUrl?: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +28,12 @@ export class BooksReaderComponent implements OnInit {
     }
 
     this.bookService.getById(id).subscribe(book => {
-      this.pdfUrl = book.book_url;
-      console.log('HEREE: ' + this.pdfUrl);
+      if (!book.bookUrl) {
+        console.error('Book has no PDF URL');
+        return;
+      }
+
+      this.pdfUrl = book.bookUrl;
     });
   }
 }

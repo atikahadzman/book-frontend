@@ -66,12 +66,27 @@ main {
     max-width: 9.2rem;
 }
 
+.layout-container {
+  height: 100vh;
+}
+
 .content {
     display: flex;
     justify-content: space-around;
     width: 100%;
     max-width: 700px;
     margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu-btn {
+  margin-right: 1rem;
 }
 
 .content h1 {
@@ -185,5 +200,9 @@ main {
 
     mat-sidenav {
         width: 220px;
+    }
+
+    .menu-btn {
+        display: none;
     }
 }
