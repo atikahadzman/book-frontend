@@ -46,11 +46,19 @@
       <div class="example-button-row">
         <a
           matButton="filled"
-          href="{{ book.bookUrl }}"
+          href="http://localhost:8080/uploads/{{ book.bookUrl }}"
           target="_blank"
         >
           Read
         </a>
+
+        <button
+          mat-button
+          color="warn"
+          (click)="deleteBook(book.id!)"
+          style="margin-left: 8px;">
+          Delete
+        </button>
       </div>
     </td>
   </ng-container>

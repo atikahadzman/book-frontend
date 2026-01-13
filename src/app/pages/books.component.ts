@@ -65,4 +65,30 @@ export class BooksComponent {
   openBook(bookId: number) {
     window.open(`/books/${bookId}/read`, '_blank');
   }
+
+  loadBooks(): void {
+    this.bookService.getAll().subscribe({
+      next: (books) => this.allBooks$.next(books),
+      error: (err) => console.error('Failed to load books', err)
+    });
+  }
+
+  deleteBook(id: string): void {
+    const confirmed = confirm('Are you sure you want to delete this book?');
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.bookService.delete(id).subscribe({
+      next: () => {
+        console.log('Book deleted');
+        this.loadBooks();
+      },
+      error: (err) => {
+        console.error('Delete failed', err);
+      }
+    });
+  }
+
 }
