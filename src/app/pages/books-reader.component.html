@@ -1,13 +1,20 @@
-<iframe
-  [src]="pdfUrl"
-  width="100%"
-  height="100%"
-  style="border: none;">
-</iframe>
-<ngx-extended-pdf-viewer
-  *ngIf="pdfUrl"
-  [src]="pdfUrl"
-  height="100vh"
-  [showDownloadButton]="false"
-  [showPrintButton]="false">
-</ngx-extended-pdf-viewer>
+<h2 *ngIf="pdfUrl">{{ pdfTitle }}</h2>
+
+<div class="pdf-wrapper">
+  <div class="pdf-header">
+    Page {{ currentPage }} / {{ totalPages }}
+  </div>
+
+  <pdf-viewer
+    [src]="pdfUrl"
+    [render-text]="true"
+    [original-size]="false"
+    [show-all]="true"
+    [fit-to-page]="true"
+    (pageChange)="onPageChange($event)"
+    (after-load-complete)="onPdfLoad($event)"
+    style="display: block; width: 100%; height: 90vh;"
+  ></pdf-viewer>
+</div>
+
+<p *ngIf="!pdfUrl">Loading PDF...</p>

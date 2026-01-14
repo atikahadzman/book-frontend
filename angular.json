@@ -21,8 +21,10 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
               },
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [

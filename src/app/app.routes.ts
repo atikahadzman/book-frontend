@@ -6,6 +6,7 @@ import { ProgressComponent } from './pages/progress.component';
 // authentication
 import { LoginComponent } from './pages/login/login.component';
 import { BookFormComponent } from './pages/book-form/book-form.component';
+import { BooksReaderComponent } from './pages/books-reader.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'progress', component: ProgressComponent },
+      { path: 'books/:id/read', component: BooksReaderComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full' }
     ]
   },
