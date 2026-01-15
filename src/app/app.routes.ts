@@ -21,6 +21,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'books', component: BooksComponent },
+      { path: 'books/new', component: BookFormComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'progress', component: ProgressComponent },
       { path: 'books/:id/read', component: BooksReaderComponent },
