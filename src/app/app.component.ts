@@ -8,7 +8,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
+// import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
@@ -24,7 +24,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatBadgeModule,
     FormsModule,
     HttpClientModule,
-    SidebarComponent
+    // SidebarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
