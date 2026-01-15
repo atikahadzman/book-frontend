@@ -27,4 +27,12 @@ export class ProgressService {
     getBook(book_id: string): Observable<Book> {
         return this.http.get<Book>(`${this.bookUrl}/${book_id}`);
     }
+
+    // SAVE PROGRESS
+    saveProgress(progress: Partial<Progress>): Observable<Progress> {
+        if (progress.id) {
+            return this.http.put<Progress>(`${this.apiUrl}/${progress.id}`, progress);
+        }
+        return this.http.post<Progress>(this.apiUrl, progress);
+    }
 }

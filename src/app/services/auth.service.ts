@@ -31,7 +31,11 @@ export class AuthService {
         return !!this._user || !!localStorage.getItem('user');
     }
 
-    get user() {
+    getUser() {
         return this._user || JSON.parse(localStorage.getItem('user') || 'null');
+    }
+
+    getUserId() {
+        return this.getUser()?.id || null;
     }
 }

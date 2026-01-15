@@ -7,4 +7,5 @@ export interface Book {
   totalPages: number;
   coverImage?: string;
   bookUrl?: string; 
+  book?: Book; 
 }
