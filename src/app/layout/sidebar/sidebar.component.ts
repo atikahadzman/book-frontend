@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterModule, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AuthService } from '../../services/auth.service';
@@ -19,6 +19,9 @@ import { MaterialModule } from '../../material.module';
     MatToolbarModule,
     MatIconModule,
     MaterialModule, 
+    CommonModule,
+    RouterModule,
+    MatIconModule
   ],
   styleUrl: './sidebar.component.css',
   templateUrl: './sidebar.component.html',
@@ -39,6 +42,6 @@ export class SidebarComponent {
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

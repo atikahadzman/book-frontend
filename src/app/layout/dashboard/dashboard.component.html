@@ -1,15 +1,26 @@
-<!-- <div class="layout">
-   sidebar menu -->
-  <!-- <mat-sidenav
-    #drawer
-    [mode]="collapsed ? 'over' : 'side'"
-    [opened]="!collapsed"
-    class="sidebar"> -->
-    <!-- <app-sidebar></app-sidebar> -->
-  <!-- </mat-sidenav> -->
+<div class="layout">
+  <!-- sidebar menu -->
+   <!-- <mat-sidenav
+    class="sidebar"
+    [mode]="isDesktop ? 'side' : 'over'"
+    [opened]="isDesktop">
+    <app-sidebar>
+           <mat-toolbar color="primary" class="toolbar">
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        *ngIf="!isDesktop">
+        <mat-icon>menu</mat-icon>
+      </button>
 
-  <!-- <main> -->
+      <span>Dashboard</span>
+    </mat-toolbar>
+    
+  </mat-sidenav> -->
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+    <app-greeting></app-greeting>
     <router-outlet></router-outlet>
-    <!-- <app-books></app-books> -->
-  <!-- </main> -->
-<!-- </div> -->
+  </main>
+</div>

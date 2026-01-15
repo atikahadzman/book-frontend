@@ -1,10 +1,14 @@
 import { provideRouter, Routes } from '@angular/router';
+import { GreetingComponent } from './layout/greeting/greeting.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import { ProfileComponent } from '././pages/profile.component';
-import { BooksComponent } from '././pages/books.component';
+// import { RegisterComponent } from './pages/register/register.component';
+import { BooksComponent } from './pages/books.component';
+import { ProfileComponent } from './pages/profile.component';
 import { ProgressComponent } from './pages/progress.component';
+
 // authentication
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './services/auth.guard';
 import { BookFormComponent } from './pages/book-form/book-form.component';
 import { BooksReaderComponent } from './pages/books-reader.component';
 
@@ -14,6 +18,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'books', component: BooksComponent },
       { path: 'profile', component: ProfileComponent },
@@ -23,16 +28,6 @@ export const routes: Routes = [
     ]
   },
 
-  {
-    path: 'books',
-      children: [
-        { path: '', component: BooksComponent },
-        { path: 'new', component: BookFormComponent },
-        { path: ':id/edit', component: BookFormComponent },
-      ],
-  },
-
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];
-
-export const router = provideRouter(routes);

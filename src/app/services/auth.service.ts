@@ -24,7 +24,8 @@ export class AuthService {
 
     logout() {
         this._user = undefined;
-        localStorage.removeItem('user'); // clear saved session if using localStorage
+        localStorage.removeItem('user');
+        sessionStorage.clear();
     }
 
     isLoggedIn(): boolean {

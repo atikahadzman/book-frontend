@@ -35,6 +35,8 @@ export class LoginComponent {
 
     this.auth.login(credentials).subscribe({
       next: () => {
+        localStorage.setItem('user', JSON.stringify({ username: this.username }));
+        console.log('username: ' + this.username);
         this.router.navigate(['/books']);
       },
       error: (err: any) => {
