@@ -2,6 +2,21 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
 
+This system purpose is for track reading progress. 
+User may login using either these credential, and they can upload the books details and the book must be in pdf.
+The user can click the 'Read' button to start reading and the 'Bookmark' button to track their progress.
+
+(mongodb) db name : bookstore
+user login
+______________
+username: admin@admin.com
+password: password
+
+username: Ezra
+password: password
+
+
+
 ## Development server
 
 To start a local development server, run:
