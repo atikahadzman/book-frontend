@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaterialModule } from '../../material.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   standalone: true,
@@ -17,17 +18,19 @@ import { MaterialModule } from '../../material.module';
     MatIconModule,   
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule,
     MaterialModule, 
     CommonModule,
     RouterModule,
-    MatIconModule
+    MatButtonModule
   ],
   styleUrl: './sidebar.component.css',
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
+  showFiller = false;
+
   isDesktop = true;
+drawer: any;
 
   constructor(
     private auth: AuthService, 

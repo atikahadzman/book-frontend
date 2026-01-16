@@ -1,24 +1,5 @@
 <div class="layout">
-  <!-- sidebar menu -->
-   <!-- <mat-sidenav
-    class="sidebar"
-    [mode]="isDesktop ? 'side' : 'over'"
-    [opened]="isDesktop">
-    <app-sidebar>
-           <mat-toolbar color="primary" class="toolbar">
-      <button
-        mat-icon-button
-        (click)="sidenav.toggle()"
-        *ngIf="!isDesktop">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-      <span>Dashboard</span>
-    </mat-toolbar>
-    
-  </mat-sidenav> -->
   <app-sidebar></app-sidebar>
-
   <main class="main-content">
     <app-greeting></app-greeting>
     <router-outlet></router-outlet>
