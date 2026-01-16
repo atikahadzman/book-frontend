@@ -40,36 +40,6 @@ export class BooksReaderComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  // ngOnInit(): void {
-  //   this.bookId = this.route.snapshot.paramMap.get('id') || undefined;
-  //   if (!this.bookId) {
-  //     return;
-  //   }
-
-  //   this.route.paramMap.subscribe(params => {
-  //     const id = params.get('id');
-  //     if (!id) return;
-
-  //     // Get the last-read page from query params
-  //     const page = this.route.snapshot.queryParamMap.get('page');
-  //     if (page) {
-  //       this.lastPage = +page;
-  //     }
-
-  //     this.bookService.getById(id).subscribe(book => {
-  //       if (book.bookUrl) {
-  //         this.pdfUrl = `http://localhost:8080/uploads/${book.bookUrl}`;
-  //         this.pdfTitle = book.title;
-  //         // this.pdfUrl = `http://localhost:8080/uploads/${book.bookUrl}?t=${Date.now()}`;
-  //         console.log('HEREE: ' + this.pdfUrl);
-  //         console.log('title: ' + this.pdfTitle);
-  //       }
-  //     });
-  //   });
-
-  //   // this.loadBookmark();
-  // }
-
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('id') || undefined;
     if (!this.bookId) return;
@@ -87,7 +57,6 @@ export class BooksReaderComponent implements OnInit {
     });
   }
 
-
   onPageChange(page: number) {
     this.currentPage = page;
   }
@@ -104,7 +73,8 @@ export class BooksReaderComponent implements OnInit {
 
   bookmarkPage() {
     const userId = this.authService.getUserId();
-    console.log('userId: ' + userId);
+    console.log('userId: ' + JSON.stringify(userId));
+    console.log('currentPage: ' + JSON.stringify(this.currentPage));
 
     if (!this.bookId) {
       return;
@@ -116,6 +86,21 @@ export class BooksReaderComponent implements OnInit {
       current_page: this.currentPage,
       last_read_at: Date.now(),
     };
+
+    if (this.currentPage === 1) {
+      progress.started_at = Date.now();
+    }
+
+    this.bookService.getById(this.bookId).subscribe({
+      next: (book) => {
+        const totalPages = book.totalPages;
+
+        if (this.currentPage === totalPages) {
+          progress.completed_at = Date.now();
+        }
+      },
+      error: (err) => console.error('Failed to get book', err)
+    });
 
     this.progressService.saveProgress(progress).subscribe({
       next: () => alert(`Bookmark saved: Page ${this.currentPage}`),
